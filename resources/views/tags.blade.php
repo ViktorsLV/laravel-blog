@@ -1,4 +1,4 @@
-@extends('layouts.app') {{-- layouts/app --}}
+@extends('layouts.app') {{-- layouts/app --}}  {{-- inputs the section below into the app file where "yield" was specified --}}
 
 @section('content')
   <div class="flex justify-center">
