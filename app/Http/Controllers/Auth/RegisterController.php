@@ -14,7 +14,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    /* (https://laravel.com/docs/8.x/authentication) */
+    /* (https://laravel.com/docs/8.x/authentication) - docs for authentication and helper methods / Factories */
     public function store(Request $request)
     {
         /* dd($request->email); // dumps the email field from request  */
@@ -33,8 +33,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password) // Hashing the password - so we don't store the actual users password as a string but instead store it as HASH (https://laravel.com/docs/8.x/hashing#hashing-passwords)
         ]);
 
-        /* auth()->user(); // returns back the whole user model which is signed it - useful to show users name in template e.g. */
+        /* auth()->user(); // Auth helper returns back the whole user model which is signed it - useful to show users name in template e.g. */
         auth()->attempt($request->only('email', 'password')); 
+        /* Auth::  -> alternative way using Facade */
 
         return redirect()->route('home');
     }

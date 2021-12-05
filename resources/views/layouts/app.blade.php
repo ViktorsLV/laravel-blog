@@ -27,22 +27,26 @@
     {{-- TODO: show only when not logged in --}}
     {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
     <ul class="flex items-center">
+      @auth {{-- show the block of code only when user IS LOGGED IN --}}
       <li>
-        <a href="" class="p-3"> USERNAME </a>
+        <a href="" class="p-3"> {{auth()->user()->name}} </a>
       </li>
       {{-- TODO: Profile? --}}
       <li>
         {{-- <form action="{{route('logout')}}" method="post" class="inline p-3"> --}}
-          <button type="submit" class="">Logout</button>
+          <button type="submit" class="">Logout</button> {{-- TODO: make this a button --}}
         {{-- </form> --}}
       </li>
+      @endauth
 
+      @guest {{-- show the block of code only when user is NOT LOGGED in --}}
       <li>
         <a href="{{route('login')}}" class="p-3">Login</a>
       </li>
       <li>
         <a href="{{route('register')}}" class="p-3">Register</a>
       </li>
+      @endguest
             
     </ul>
   </nav>

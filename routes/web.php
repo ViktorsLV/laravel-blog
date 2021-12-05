@@ -26,6 +26,7 @@ Route::get('/', function () {
 // index controller return page views
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register'); // can assign a name so we can look for this route in links href="{{route('register')}}
+Route::post('/register', [RegisterController::class, 'store']); // registers and signs in the user
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
