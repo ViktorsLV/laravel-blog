@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'username',
+        'username', // manually added this field 
         'name',
         'email',
         'password',
@@ -31,7 +31,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token', // can be used to remember user 
     ];
 
     /**

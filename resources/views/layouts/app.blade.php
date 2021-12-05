@@ -24,11 +24,13 @@
       </li>
     </ul>
 
+    {{-- TODO: show only when not logged in --}}
     {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
     <ul class="flex items-center">
       <li>
         <a href="" class="p-3"> USERNAME </a>
       </li>
+      {{-- TODO: Profile? --}}
       <li>
         {{-- <form action="{{route('logout')}}" method="post" class="inline p-3"> --}}
           <button type="submit" class="">Logout</button>

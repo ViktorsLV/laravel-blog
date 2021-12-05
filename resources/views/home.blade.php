@@ -4,6 +4,9 @@
   <div class="flex justify-center">
     <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
       Home
+
+      {{-- TODO: greet the user (with users name from User obj), create a banner (telling what is this app about--}}
+      {{-- TODO: if user is not logged in -> prompt to log in and show some banner --}}
     </div>
   </div>
 @endsection
