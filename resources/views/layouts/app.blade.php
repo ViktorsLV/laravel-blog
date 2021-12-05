@@ -8,7 +8,7 @@
   <title>Laravel Blog</title>
 </head>
 <body class="bg-white">
-  <nav class="p-6 bg-blue-100 flex justify-between mb-6">
+  <nav class="p-6 bg-purple-400 flex justify-between mb-6 text-white">
     <ul class="flex items-center">
       <li>
         <a href="/" class="p-3">Home</a>
