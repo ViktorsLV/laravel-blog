@@ -1,8 +1,11 @@
 <?php
 
+/* AUth controllers */
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+
+/* Other page and functionality controllers */
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SavedController;
 use App\Http\Controllers\TagController;
@@ -31,7 +34,7 @@ Route::post('/register', [RegisterController::class, 'store']); // registers and
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
-Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout'); // has to be a post route to prevent csrf
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 

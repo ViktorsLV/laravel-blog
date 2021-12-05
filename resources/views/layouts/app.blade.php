@@ -35,13 +35,14 @@
       </li>
       {{-- TODO: Profile? --}}
       <li>
-        {{-- <form action="{{route('logout')}}" method="post" class="inline p-3"> --}}
+        <form action="{{route('logout')}}" method="post" class="inline p-3"> {{-- has to be a form with CSRF so user cannot be logged out by an attack --}}
+          @csrf
           <button type="submit" class="">Logout</button> {{-- TODO: make this a button --}}
-        {{-- </form> --}}
+        </form>
       </li>
       @endauth
 
-      @guest {{-- show the block of code only when user is NOT LOGGED in --}}
+      @guest {{-- show the block of code only when user is NOT LOGGED in  ( https://laravel.com/docs/8.x/blade#authentication-directives ) --}}
       <li>
         <a href="{{route('login')}}" class="p-3">Login</a>
       </li>
