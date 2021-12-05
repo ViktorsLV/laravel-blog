@@ -19,9 +19,11 @@
       <li>
         <a href="{{route('tags')}}" class="p-3">Tags</a>
       </li>
-      <li>
-        <a href="{{route('saved')}}" class="p-3">Saved</a>
-      </li>
+      @auth
+        <li>
+          <a href="{{route('saved')}}" class="p-3">Saved</a>
+        </li>
+      @endauth
     </ul>
 
     {{-- TODO: show only when not logged in --}}

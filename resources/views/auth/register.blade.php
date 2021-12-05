@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="flex justify-center">
-    <div class="w-4/12 bg-purple-100 p-6 rounded-lg">
+    <div class="w-4/12 bg-purple-100 p-6 rounded-md">
       {{-- TODO: add heading --}}
 
       <form action="{{route('register')}}" method="post">
@@ -63,7 +63,7 @@
           @enderror --}}
         </div>
 
-        <button type="submit" class="bg-purple-300 text-white px-4 py-3 rounded font-medium w-full hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">Register</button>
+        <button type="submit" class="bg-purple-400 text-white px-4 py-3 rounded font-medium w-full hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">Register</button>
       </form>
 
       {{-- TODO: add "log in button" --}}
