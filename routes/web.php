@@ -37,6 +37,9 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout'); // has to be a post route to prevent csrf
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::post('/posts', [PostController::class, 'store']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/tags', [TagController::class, 'index'])->name('tags')->middleware('auth'); // auth middleware prevents the user from visiting page if he is not logged in
 

@@ -25,8 +25,8 @@ class LoginController extends Controller
         ]);
 
         /* if not  */
-        if (!auth()->attempt($request->only('email', 'password'))) { // gonna add remember token in application 
-            return back()->with('status', 'Invalid login details'); // go page back
+        if (!auth()->attempt($request->only('email', 'password'), $request->remember)) { // adds remember token in application and remembers the users credentials 
+            return back()->with('status', 'Invalid login details'); // go page back if the details are invalid
         }; 
 
         return redirect()->route('home');
