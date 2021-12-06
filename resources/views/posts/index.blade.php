@@ -34,42 +34,7 @@
     @if ($posts->count()) {{-- If we have posts then show posts --}}
 
     @foreach ($posts as $post)
-    {{-- TODO: Create component --}}
-    {{-- TODO: Go to single post --}}
-    <div class="mb-4">
-      <a href="" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 text-sm">{{
-        $post->created_at->diffForHumans() }}</span>
-
-      <p class="mb-2">{{ $post->body }}</p>
-
-      @if ($post->ownedBy(auth()->user()))
-        <form action="{{ route('posts.destroy', $post) }}" method="post">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="text-blue-500">Delete</button>
-        </form>
-      @endif
-    </div>
-
-    <div class="flex items-center">
-      @auth
-      @if (!$post->likedBy(auth()->user()))
-      <form action="{{ route('posts.likes', $post->id) }}" method="post" class="mr-1">
-        @csrf
-        <button type="submit" class="text-blue-500">Like</button>
-      </form>
-      @else
-      <form action="{{ route('posts.likes', $post->id) }}" method="post" class="mr-1">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="text-blue-500">Unlike</button>
-      </form>
-      @endif
-      @endauth
-
-      <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span> 
-      {{-- (https://laravel.com/docs/8.x/helpers#strings) using string helpers conferts the word to its plural form --}}
-    </div>
+      <x-post :post="$post"/> {{-- Takes in the post component which can be reused --}}
     @endforeach
 
     {{$posts->links()}}
