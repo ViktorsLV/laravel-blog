@@ -3,7 +3,7 @@
 @section('content')
   <div class="flex justify-center">
     <div class="w-8/12 ">
-
+    {{-- TODO: add back button  --}}
       <div class="p-6">
         <h1 class="text-2xl font-medium mb-1">{{$user->name}}</h1>
         {{-- TODO: crete user stats? --}}

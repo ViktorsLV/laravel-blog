@@ -1,5 +1,6 @@
 @props(['post' => $post])
 
+{{-- TODO: add save functionality --}}
 <div class="mb-4">
     <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a> <span
         class="text-gray-600 text-sm">{{
