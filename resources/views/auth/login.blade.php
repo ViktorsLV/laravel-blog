@@ -5,7 +5,7 @@
     <div class="w-8/12 bg-white-100 rounded-md flex felx-row border-4 border-purple-100">
 
       <div class="w-6/12 bg-white-100 p-6 mt-0">
-        <h1 class="text-3xl mb-2 font-bold text-gray-600">Blog Name</h1>
+        <h1 class="text-3xl mb-2 font-bold text-gray-600">BlogIT</h1>
         <div class="bg-white p-6 rounded-md text-center mx-auto mt-10 text-gray-600">
           <img src="{{ asset('images/auth.svg') }}" alt="" width="250" class="mx-auto"> 
           <h1 class="text-2xl mb-2 font-bold mt-4">Login securely</h1>

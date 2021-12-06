@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/'; // redirects to this URL after the user is logged in
 
     /**
      * The controller namespace for the application.
