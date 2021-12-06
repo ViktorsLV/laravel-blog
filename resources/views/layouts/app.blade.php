@@ -26,7 +26,6 @@
       @endauth
     </ul>
 
-    {{-- TODO: show only when not logged in --}}
     {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
     <ul class="flex items-center">
       @auth {{-- show the block of code only when user IS LOGGED IN --}}
@@ -44,10 +43,11 @@
 
       @guest {{-- show the block of code only when user is NOT LOGGED in  ( https://laravel.com/docs/8.x/blade#authentication-directives ) --}}
       <li>
-        <a href="{{route('login')}}" class="p-3">Login</a>
+        <a href="{{route('login')}}" class="p-3">Log in</a>
       </li>
       <li>
-        <a href="{{route('register')}}" class="p-3">Register</a>
+        {{-- TODO: make this a button --}}
+        <a href="{{route('register')}}" class="p-3">Create account</a>
       </li>
       @endguest
             

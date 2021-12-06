@@ -14,7 +14,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'body' => $this->faker->sentence(20), /* App\Models\Post::factory()->times(10)->create(['user_id' => 2]);  -- assigns the userId to each post */
         ];
     }
 }
