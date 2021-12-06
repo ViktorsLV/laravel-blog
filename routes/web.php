@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 /* Other page and functionality controllers */
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\SavedController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,9 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes')->middleware('auth'); // {post} allows us to use route model binding and access the Post Model
+Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes')->middleware('auth'); // unauthenticated users can't perform these actions
 
 Route::get('/tags', [TagController::class, 'index'])->name('tags')->middleware('auth'); // auth middleware prevents the user from visiting page if he is not logged in
 

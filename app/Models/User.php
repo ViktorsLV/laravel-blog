@@ -47,4 +47,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class); // one to many relationship type 
     }
+
+    public function likes() 
+    {
+        return $this->hasMany(Like::class); // same relationship with likes
+    }
+
+    public function receivedLikes() 
+    {
+        return $this->hasManyThrough(Like::class, Post::class); //creates relationship to see how many likes user has received, (NOT GIVEN!) 
+    }
 }

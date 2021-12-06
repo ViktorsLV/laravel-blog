@@ -26,6 +26,8 @@
       @endauth
     </ul>
 
+    {{-- TODO: Look at performanc improvements --}}
+
     {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
     <ul class="flex items-center">
       @auth {{-- show the block of code only when user IS LOGGED IN --}}

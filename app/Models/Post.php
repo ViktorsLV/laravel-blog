@@ -15,7 +15,7 @@ class Post extends Model
 
     public function likedBy(User $user)
     {
-        return $this->likes->contains('user_id', $user->id); // looks up if the like contains the user id that is clicking it right now
+        return $this->likes->contains('user_id', $user->id); // looks up if the like contains the user id that is clicking it right now and returns true if it has been liked - > later can be used in template
     }
     
     // public function ownedBy(User $user)
