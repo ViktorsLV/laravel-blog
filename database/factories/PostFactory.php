@@ -13,8 +13,11 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        /* php artisan tinker - to enter the shell and seed db with fake data */
+        /* App\Models\Post::factory()->times(10)->create(['user_id' => 1]);  -- assigns the userId to each post */
         return [
-            'body' => $this->faker->sentence(20), /* App\Models\Post::factory()->times(10)->create(['user_id' => 2]);  -- assigns the userId to each post */
+            'body' => $this->faker->sentence(20), 
+            'title' => $this->faker->realText($maxNbChars = 128, $indexSize = 2), /* creating fake text with real words, (not lorem ipsum). Taken from Faker docs */
         ];
     }
 }

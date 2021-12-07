@@ -8,7 +8,7 @@
   <title>BlogIT | IT Blog</title>
 </head>
 <body class="bg-white">
-  <nav class="p-3 bg-purple-400 flex justify-between mb-6 text-white">
+  <nav class="p-4 bg-purple-400 flex justify-between mb-6 text-white">
     <ul class="flex items-center">
       <li>
         <a href="/" class="mr-2 {{request()->is('/') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Home</a>

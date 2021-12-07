@@ -40,9 +40,10 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'body' => 'required', // laravel docs for validation 
+            'title' => 'required|unique:posts|max:128', // laravel docs for validation 
         ]);
 
-        $request->user()->posts()->create($request->only('body')); // accessing the logged in user and assigning him to the post which is being created
+        $request->user()->posts()->create($request->only(['body', 'title'])); // accessing the logged in user and assigning him to the post which is being created
 
         return back(); // to which route go after submit
     }

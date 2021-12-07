@@ -10,7 +10,10 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        /* TODO: image? */
+        /* TODO: tags */
         'body', // possible to fill in the body with data 
+        'title', 
     ];
 
     public function likedBy(User $user)
@@ -32,4 +35,5 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+    /* TODO: comments ? */
 }

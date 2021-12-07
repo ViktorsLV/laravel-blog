@@ -6,14 +6,14 @@
 {{-- TODO: Comments? --}}
 {{-- TODO: Tags --}}
 
-<div class="mb-4 bg-white p-6 rounded-lg hover:shadow-md">
-    <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a> <span
-        class="text-gray-600 text-sm">{{
-        $post->created_at->diffForHumans() }}</span>
+<div class="mb-4 bg-white p-6 pb-4 rounded-lg hover:shadow-md">
+    <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 ml-2 text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
-    <p class="mb-2">{{ $post->body }}</p>
+    <p class="mb-2 font-bold text-2xl">{{ $post->title }}</p>
 
-    <div class="flex flex-row">
+    {{-- <p class="mb-2">{{ $post->body }}</p> --}}
+
+    <div class="flex flex-row mt-4">
         @auth
             @if (!$post->likedBy(auth()->user()))
             <form action="{{ route('posts.likes', $post->id) }}" method="post" class="mr-1">
@@ -25,7 +25,7 @@
             <form action="{{ route('posts.likes', $post->id) }}" method="post" class="mr-1">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600">Unlike</button>
+                <button type="submit" class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600 hover:bg-blue-50">Unlike</button>
             </form>
             @endif
         @endauth

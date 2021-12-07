@@ -15,7 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id(); // auto-incrementing ID 
-            $table->text('body');
+            $table->mediumText('body');
+            $table->text('title');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // onDelete -> if we delete a user -> all users posts will be deleted from DB; Also added FK to user table
             $table->timestamps(); // creates values -> createdAt & updatedAt
         });
