@@ -8,6 +8,7 @@
         <h1 class="text-2xl font-medium mb-2 text-gray-600">{{$user->name}}</h1>
         {{-- TODO: crete user stats? --}}
         {{-- <p>Posted {{$posts->count()}} {{Str::plural('post', $posts->count())}} and received {{$user->receivedLikes->count()}} likes</p> --}}
+        <p  class="text-xl font-medium text-gray-600">User's posts:</p>
       </div>
 
       <div class="rounded-lg">

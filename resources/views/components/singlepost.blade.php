@@ -3,13 +3,17 @@
 {{-- TODO: Add save functionality --}}
 {{-- TODO: Comments? --}}
 {{-- TODO: Tags --}}
+{{-- TODO: Add user avatar --}}
 
 <div class="mb-4 bg-white p-6 pb-4 rounded-lg hover:shadow-md">
-    <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 ml-2 text-sm">{{ $post->created_at->diffForHumans() }}</span>
+    <div class="flex flex-col">
 
-    <p><a href="{{route('posts.show', $post)}}" class="mb-2 font-bold text-2xl hover:text-purple-400">{{Str::of($post->title)->limit(60, ' (...)')}}</a> </p>
-
-    {{-- <p class="mb-2">{{ $post->body }}</p> --}}
+        <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a> 
+        <span class="text-gray-600 text-sm">Posted {{ $post->created_at->diffForHumans() }}</span>
+        <p class="mt-4 mb-2 font-bold text-2xl"> {{ $post->title }} </p>
+        
+        <p class="mb-2 mt-10">{{ $post->body }}</p>
+    </div>
 
     <div class="flex flex-row mt-4">
         @auth

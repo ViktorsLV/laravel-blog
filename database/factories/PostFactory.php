@@ -15,8 +15,9 @@ class PostFactory extends Factory
     {
         /* php artisan tinker - to enter the shell and seed db with fake data */
         /* App\Models\Post::factory()->times(10)->create(['user_id' => 1]);  -- assigns the userId to each post */
+        /* (https://fakerphp.github.io/formatters/text-and-paragraphs/) */
         return [
-            'body' => $this->faker->sentence(20), 
+            'body' => $this->faker->paragraph(15), 
             'title' => $this->faker->realText($maxNbChars = 128, $indexSize = 2), /* creating fake text with real words, (not lorem ipsum). Taken from Faker docs */
         ];
     }

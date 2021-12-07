@@ -32,7 +32,7 @@ class PostController extends Controller
         
         return view('posts.show', [
             'post' => $post
-        ]); // send all posts to post view!
+        ]); // send post to single post view!
 
     }
 
