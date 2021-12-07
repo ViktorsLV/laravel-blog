@@ -45,7 +45,7 @@ class PostController extends Controller
 
         $request->user()->posts()->create($request->only(['body', 'title'])); // accessing the logged in user and assigning him to the post which is being created
 
-        return back(); // to which route go after submit
+        return back(); // to which route go after submission
     }
 
     public function destroy(Post $post, Request $request)
