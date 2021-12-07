@@ -21,7 +21,7 @@
           <label for="title" class="sr-only">Title</label>
           <textarea type="text" name="title" id="title" cols="30" rows="1"
             class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('title') border-red-500 @enderror"
-            value="{{ old('title')}}" placeholder="Post Tite"></textarea>
+            value="{{ old('title')}}" placeholder="Post Title"></textarea>
 
           @error('title')
           <div class="text-red-500 mt-4 text-sm">
@@ -53,7 +53,7 @@
     <x-post :post="$post" /> {{-- Takes in the post component which can be reused --}}
     @endforeach
 
-    {{$posts->links()}}
+    {{$posts->links()}} {{-- REVIEW: ??? --}}
 
     @else {{-- If there are NO posts then show this text --}}
     <p>No posts here yet</p>
