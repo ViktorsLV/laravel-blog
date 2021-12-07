@@ -28,8 +28,9 @@
             @endif
         @endauth
 
-        <span class="mt-1">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span> {{--
-        (https://laravel.com/docs/8.x/helpers#strings) using string helpers conferts the word to its plural form --}}
+        {{-- TODO: add icons --}}
+        <span class="mt-1">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span> {{--(https://laravel.com/docs/8.x/helpers#strings) using string helpers conferts the word to its plural form --}}
+        <span class="mt-1 ml-3">{{ $post->comments->count() }} {{ Str::plural('comment', $post->comments->count()) }}</span> {{--(https://laravel.com/docs/8.x/helpers#strings) using string helpers conferts the word to its plural form --}}
     </div>
 
     @auth

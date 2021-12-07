@@ -50,7 +50,7 @@
     @if ($posts->count()) {{-- If we have posts then show posts --}}
 
     @foreach ($posts as $post)
-    <x-post :post="$post" /> {{-- Takes in the post component which can be reused --}}
+      <x-post :post="$post" /> {{-- Takes in the post component which can be reused --}}
     @endforeach
 
     {{$posts->links()}} {{-- REVIEW: ??? --}}

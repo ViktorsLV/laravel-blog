@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class PostLikeController extends Controller
 {
-    public function store(Post $post, Request $request) // getting the Post model 
+    public function store(Post $post, Request $request) // getting the Post model to use it in request
     {
+        // don't let the user like the comment twice
+
         if($post->likedBy($request->user())) {
             return response(null, 409); // conflict code saying the action has already been done. 
         }

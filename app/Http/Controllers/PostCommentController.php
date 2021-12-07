@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,12 +13,10 @@ class PostCommentController extends Controller
             'commentBody' => 'required|max:400', // laravel docs for validation 
         ]);
 
-        $post->comments()->create([
-            'user_id' => $request->user()->id, 
-            'commentBody' => $request->input('commentBody')
+        $post->comments()->create([ // create comment on given post 
+            'user_id' => $request->user()->id, // assign the comment to the user
+            'commentBody' => $request->input('commentBody') // take the input and add to request
         ]);
-
-        // $request->user()->posts()->comments()->create($request->only(['commentBody'])); // accessing the logged in user and assigning him to the post which is being created
 
         return back();
     }

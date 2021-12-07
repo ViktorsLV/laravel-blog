@@ -36,7 +36,6 @@ class Post extends Model
         return $this->belongsTo(User::class); // creating a relationship allowing to take the user Model from the current post and display in template
     }
 
-
     public function comments()
     {
         return $this->hasMany(Comment::class);

@@ -40,7 +40,7 @@
             --}}
         </div>
 
-        <div class="mt-10">
+        <div class="mt-10 mb-5">
             <div class="text-2xl font-medium mb-3 text-gray-600">Comments ({{ $post->comments->count() }})</div>
             @auth
             <form action="{{route('posts.comments', $post->id)}}" method="post">
@@ -69,17 +69,23 @@
             <div>
 
                 @foreach ($post->comments as $comment)
-                    <p class="mt-1">{{ $comment->commentBody }}</p>
+                    <div class="mt-1 mb-2 p-5 border-2 border-gray-200 rounded-md ">
+                        <div class="mb-2">
+                            <a href="" class="font-bold">{{ $comment->user->name }}</a> {{-- taken from Comment model where relationship was made with user --}}
+                            <span class="text-gray-600 text-sm ml-2">{{ $post->created_at->diffForHumans() }}</span>
+                        </div>
+                        <p >{{ $comment->commentBody }}</p>
+                    </div>
                 @endforeach
 
                 {{-- {{$posts->links()}} --}}
             </div>
         @else {{-- If there are NO posts then show this text --}}
+        {{-- TODO: add SVG --}}
            <p>No comments here yet</p>
         @endif
 
     </div>
-
 
     @auth
     @if ($post->ownedBy(auth()->user()))
