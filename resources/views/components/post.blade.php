@@ -46,25 +46,25 @@
 
     @auth
     <div class="text-right flex flex-row justify-end">
-            {{-- TODO: add icons --}}
-            @if (!$post->ownedBy(auth()->user())) {{-- If the post belongs to a user he cannot save it --}}
-            <div>
-                @if (!$post->savedBy(auth()->user())) {{-- if the post isnt saved by user -> show "save" option --}}
-                <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
-                    @csrf
-                    <button
-                        class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save</button>
-                </form>
-                @else {{-- otherwise -> show "unsave" option --}}
-                <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600 hover:bg-blue-50">Unsave</button>
-                </form>
-                @endif
-            </div>
+        {{-- TODO: add icons --}}
+        @if (!$post->ownedBy(auth()->user())) {{-- If the post belongs to a user he cannot save it --}}
+        <div>
+            @if (!$post->savedBy(auth()->user())) {{-- if the post isnt saved by user -> show "save" option --}}
+            <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
+                @csrf
+                <button
+                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save</button>
+            </form>
+            @else {{-- otherwise -> show "unsave" option --}}
+            <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                    class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600 hover:bg-blue-50">Unsave</button>
+            </form>
             @endif
+        </div>
+        @endif
         <div>
             @if ($post->ownedBy(auth()->user()))
             <form action="{{ route('posts.destroy', $post) }}" method="post">
