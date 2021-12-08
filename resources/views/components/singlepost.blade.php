@@ -7,9 +7,32 @@
 
 <div class="mb-4 bg-white p-6 pb-4 rounded-lg hover:shadow-md">
     <div class="flex flex-col">
+        <div class="flex flex-row w-12/12 justify-between">
+            <div class="flex flex-col">
+                <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a>
+                <span class="text-gray-600 text-sm">Posted {{ $post->created_at->diffForHumans() }}</span>
+            </div>
+                
+            @if (!$post->ownedBy(auth()->user())) {{-- If the post belongs to a user he cannot save it --}}
+            <div class="">
+                @if (!$post->savedBy(auth()->user())) {{-- if the post isnt saved by user -> show "save" option --}}
+                <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
+                    @csrf
+                    <button
+                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save</button>
+                </form>
+                @else {{-- otherwise -> show "unsave" option --}}
+                <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                    class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600 hover:bg-blue-50">Unsave</button>
+                </form>
+                @endif
+            </div>
+            @endif
+        </div>
 
-        <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a>
-        <span class="text-gray-600 text-sm">Posted {{ $post->created_at->diffForHumans() }}</span>
         <p class="mt-4 mb-2 font-bold text-3xl"> {{ $post->title }} </p>
 
         <p class="mb-2 mt-10">{{ $post->body }}</p>

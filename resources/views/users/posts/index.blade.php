@@ -8,17 +8,17 @@
         <h1 class="text-2xl font-medium mb-2 text-gray-600">{{$user->name}}</h1>
         {{-- TODO: crete user stats? --}}
         {{-- <p>Posted {{$posts->count()}} {{Str::plural('post', $posts->count())}} and received {{$user->receivedLikes->count()}} likes</p> --}}
-        <p  class="text-xl font-medium text-gray-600">User's posts:</p>
       </div>
-
+      
       <div class="rounded-lg">
         @if ($posts->count()) {{-- If we have posts then show posts --}}
+        <p  class="text-xl font-medium text-gray-600 mb-2">User's posts:</p>
 
         @foreach ($posts as $post)
           <x-post :post="$post"/> {{-- Takes in the post component which can be reused --}}
         @endforeach
     
-        {{$posts->links()}}
+        {{$posts->links()}} {{-- pagination --}}
     
         @else {{-- If there are NO posts then show this text --}}
           <p>{{ $user->name }} does not have any posts yet</p>

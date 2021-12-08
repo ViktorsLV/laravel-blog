@@ -8,9 +8,11 @@ use App\Http\Controllers\PostCommentController;
 /* Other page and functionality controllers */
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
-use App\Http\Controllers\SavedController;
+use App\Http\Controllers\PostSavedController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserSavedController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,14 +45,18 @@ Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show'); // route to show an individual post. The URL consists of /post/{postId}
 
-Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts'); // :username -> extracts this column from route model binding (https://laravel.com/docs/8.x/routing#route-model-binding)
+Route::get('/users/{user:username}/profile', [UserPostController::class, 'index'])->name('users.posts'); // :username -> extracts this column from route model binding (https://laravel.com/docs/8.x/routing#route-model-binding)
+
+Route::get('/profile/{user:username}/my_profile', [UserProfileController::class, 'index'])->name('user.profile')->middleware('auth'); // returns currently logged in user profile
 
 Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes')->middleware('auth'); // {post} allows us to use route model binding and access the Post Model
 Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes')->middleware('auth'); // unauthenticated users can't perform these actions
+
+Route::get('/saved/{user:username}/posts', [UserSavedController::class, 'index'])->name('saved')->middleware('auth');
+Route::post('/posts/{post}/save-post', [PostSavedController::class, 'store'])->name('posts.save')->middleware('auth'); // {post} allows us to use route model binding and access the Post Model
+Route::delete('/posts/{post}/save-post', [PostSavedController::class, 'destroy'])->name('posts.save')->middleware('auth'); // unauthenticated users can't perform these actions
 
 Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('posts.comments')->middleware('auth'); // comment logic -> similar to likes
 Route::delete('/posts/{post}/comments', [PostCommentController::class, 'destroy'])->name('posts.comments')->middleware('auth'); 
 
 Route::get('/tags', [TagController::class, 'index'])->name('tags')->middleware('auth'); // auth middleware prevents the user from visiting page if he is not logged in
-
-Route::get('/saved', [SavedController::class, 'index'])->name('saved')->middleware('auth');
