@@ -32,7 +32,7 @@
     <ul class="flex items-center">
       @auth {{-- show the block of code only when user IS LOGGED IN --}}
       <li>
-        <a href="" class="mr-2 {{request()->is('profile') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} border-2 border-gray-100 p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black"> {{auth()->user()->name}} </a>
+        <a href="{{route('user.profile', auth()->user())}}" class="mr-2 {{request()->is('profile') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} border-2 border-gray-100 p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black"> {{auth()->user()->name}} </a>
       </li>
       {{-- TODO: Profile? --}}
       <li>
