@@ -1,7 +1,5 @@
 @props(['post' => $post])
 
-{{-- TODO: Add save functionality --}}
-{{-- TODO: Comments? --}}
 {{-- TODO: Tags --}}
 {{-- TODO: Add user avatar --}}
 

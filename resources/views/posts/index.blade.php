@@ -4,9 +4,7 @@
 {{-- TODO: Filtering? (Most liked, most recent) --}}
 {{-- TODO: Calculate how long is the reading time? --}}
 {{-- TODO: Social accounts? --}}
-{{-- TODO: Likes under posts --}}
 {{-- TODO: Use markdown? --}}
-{{-- TODO: add save functionality --}}
 
 @section('content')
 <div class="flex justify-center">

@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="flex justify-center">
-    <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
+    <div class="w-8/12 bg-purple-100 p-6 rounded-lg mb-10">
     {{-- TODO: add back button  --}}
       <div class="p-6">
         <h1 class="text-2xl font-medium mb-2 text-gray-600">{{$user->name}}</h1>
@@ -37,7 +37,10 @@
         {{$posts->links()}}
     
         @else {{-- If there are NO posts then show this text --}}
-          <p> You don't have any posts yet</p>
+        <div class="mt-10 text-center">
+          <img src="{{ asset('images/noposts.svg') }}" alt="" width="250" class="mx-auto"> 
+          <p class="mt-4"> You don't have any posts saved yet</p>
+        </div>
         @endif
       </div>
     </div>

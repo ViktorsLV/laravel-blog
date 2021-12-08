@@ -6,11 +6,7 @@
     {{-- TODO: add back button  --}}
       <div class="p-6">
         <h1 class="text-2xl font-medium mb-2 text-gray-600">Posts saved by you</h1>
-        {{-- TODO: crete user stats? --}}
-        
       </div>
-      
-      {{-- {{ dd($posts);}} --}}
       
       <div class="rounded-lg">
         @if ($posts->count()) {{-- If we have posts then show posts --}}
@@ -23,7 +19,10 @@
         {{$posts->links()}}
     
         @else {{-- If there are NO posts then show this text --}}
-          <p> You don't have any posts yet</p>
+          <div class="mt-10 text-center">
+            <img src="{{ asset('images/empty.svg') }}" alt="" width="250" class="mx-auto"> 
+            <p class="mt-4"> You don't have any posts saved yet</p>
+          </div>
         @endif
       </div>
       
