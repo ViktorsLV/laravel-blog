@@ -74,6 +74,7 @@ class User extends Authenticatable
     }   
 
     public function savedPosts() {
-        return $this->belongsToMany(Post::class , 'saved_posts' , 'user_id', 'post_id');
+        // The third argument is the foreign key name of the model on which you are defining the relationship
+        return $this->belongsToMany(Post::class , 'saved_posts' , 'user_id', 'post_id'); // retrieves all the saved posts where the given conditions return true
     }
 }

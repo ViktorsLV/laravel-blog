@@ -13,13 +13,13 @@ class SavedPost extends Model
         'user_id'
     ];
 
-    protected $table = 'saved_posts';
+    protected $table = 'saved_posts'; // reference table name
 
     public function post() {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class); // create relationship with Post 
     }
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class); // same
     }
 }
