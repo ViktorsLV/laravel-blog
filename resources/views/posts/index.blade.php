@@ -11,7 +11,6 @@
 @section('content')
 <div class="flex justify-center">
   <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
-    <div class="text-2xl font-medium mb-5 text-gray-600">Recent Posts</div>
     @auth
     <div class="bg-white p-6 rounded-lg mb-10">
       <form action="{{route('posts')}}" method="post">
@@ -41,13 +40,13 @@
           </div>
           @enderror
         </div>
-        <button type="submit"
-          class="mb-2 bg-purple-500 text-white px-4 py-3 rounded font-medium w-full hover:bg-purple-600">Post</button>
+        <button type="submit" class="mb-2 bg-purple-500 text-white px-4 py-3 rounded font-medium w-full hover:bg-purple-600">Post</button>
       </form>
     </div>
     @endauth
 
     @if ($posts->count()) {{-- If we have posts then show posts --}}
+    <div class="text-2xl font-medium mb-5 text-gray-600">Recent Posts</div>
 
     @foreach ($posts as $post)
       <x-post :post="$post" /> {{-- Takes in the post component which can be reused --}}

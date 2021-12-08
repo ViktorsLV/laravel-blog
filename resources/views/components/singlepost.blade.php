@@ -13,6 +13,7 @@
                 <span class="text-gray-600 text-sm">Posted {{ $post->created_at->diffForHumans() }}</span>
             </div>
                 
+            @auth
             @if (!$post->ownedBy(auth()->user())) {{-- If the post belongs to a user he cannot save it --}}
             <div class="">
                 @if (!$post->savedBy(auth()->user())) {{-- if the post isnt saved by user -> show "save" option --}}
@@ -31,6 +32,7 @@
                 @endif
             </div>
             @endif
+            @endauth
         </div>
 
         <p class="mt-4 mb-2 font-bold text-3xl"> {{ $post->title }} </p>
