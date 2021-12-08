@@ -8,6 +8,7 @@ use App\Http\Controllers\PostCommentController;
 /* Other page and functionality controllers */
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\PostSavedController;
 use App\Http\Controllers\SavedController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserPostController;
@@ -47,6 +48,9 @@ Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])
 
 Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes')->middleware('auth'); // {post} allows us to use route model binding and access the Post Model
 Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes')->middleware('auth'); // unauthenticated users can't perform these actions
+
+Route::post('/posts/{post}/save-post', [PostSavedController::class, 'store'])->name('posts.save')->middleware('auth'); // {post} allows us to use route model binding and access the Post Model
+Route::delete('/posts/{post}/save-post', [PostSavedController::class, 'destroy'])->name('posts.save')->middleware('auth'); // unauthenticated users can't perform these actions
 
 Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('posts.comments')->middleware('auth'); // comment logic -> similar to likes
 Route::delete('/posts/{post}/comments', [PostCommentController::class, 'destroy'])->name('posts.comments')->middleware('auth'); 
