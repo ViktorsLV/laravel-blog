@@ -53,7 +53,7 @@
       <x-post :post="$post" /> {{-- Takes in the post component which can be reused --}}
     @endforeach
 
-    {{$posts->links()}} {{-- REVIEW: ??? --}}
+    {{$posts->links()}} {{-- Pagination -> styling is built in with tailwind --}}
 
     @else {{-- If there are NO posts then show this text --}}
     <p>No posts here yet</p>

@@ -54,9 +54,18 @@ class Post extends Model
     {
         return $this->saves->contains('user_id', $user->id); // looks up if the save contains the user id that is clicking it right now and returns true if it has been saved - > later used for showing users saved posts
     }
+    // public function savedBy()
+    // {
+    //     return $this->belongsToMany(User::class, 'saved_posts' , 'post_id'  , 'user_id'); // looks up if the save contains the user id that is clicking it right now and returns true if it has been saved - > later used for showing users saved posts
+    // }
     
     public function saves()
     {
         return $this->hasMany(SavedPost::class); // one post can be saved many times
+    }
+
+    public function getIsSavedAttribute() 
+    {
+        return $this->likes->where('user_id', auth()->id())->count() > 0;
     }
 }

@@ -10,7 +10,7 @@ class UserProfileController extends Controller
 {
     public function index(User $user, Post $posts) 
     {
-        // $posts = $user->posts()->paginate(5); 
+        $posts = $user->posts()->paginate(5); 
 
         return view('users.profile.index', [
             'user' => $user,

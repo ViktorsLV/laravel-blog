@@ -14,31 +14,30 @@
         <a href="/" class="mr-2 {{request()->is('/') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Home</a>
       </li>
       <li>
-        <a href="{{route('posts')}}" class="mr-2 {{request()->is('posts') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Posts</a>
+        <a href="{{route('posts')}}" class="mr-2 {{request()->is('posts') || request()->is('posts/*')  ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Posts</a>
       </li>
       <li>
         <a href="{{route('tags')}}" class="mr-2 {{request()->is('tags') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Tags</a>
       </li>
       @auth
         <li>
-          <a href="{{route('saved')}}" class="mr-2 {{request()->is('saved') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Saved</a>
+          <a href="{{route('saved', auth()->user())}}" class="mr-2 {{request()->is('saved/*') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Saved</a>
         </li>
       @endauth
     </ul>
 
-    {{-- TODO: Look at performanc improvements --}}
+    {{-- TODO: Look at performance improvements --}}
 
     {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
     <ul class="flex items-center">
       @auth {{-- show the block of code only when user IS LOGGED IN --}}
       <li>
-        <a href="{{route('user.profile', auth()->user())}}" class="mr-2 {{request()->is('profile') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} border-2 border-gray-100 p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black"> {{auth()->user()->name}} </a>
+        <a href="{{route('user.profile', auth()->user())}}" class="mr-2 {{request()->is('profile/*') ? ' bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} border-2 border-gray-100 p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black"> {{auth()->user()->name}} </a>
       </li>
-      {{-- TODO: Profile? --}}
       <li>
         <form action="{{route('logout')}}" method="post" class="inline"> {{-- has to be a form with CSRF so user cannot be logged out by an attack --}}
           @csrf
-          <button type="submit" class="mr-2 hover:bg-gray-100 hover:bg-opacity-50 rounded p-2 hover:text-black">Logout</button> {{-- TODO: make this a button --}}
+          <button type="submit" class="mr-2 hover:bg-gray-100 hover:bg-opacity-50 rounded p-2 hover:text-black">Logout</button> 
         </form>
       </li>
       @endauth
@@ -48,7 +47,6 @@
         <a href="{{route('login')}}" class="p-3 mr-4 hover:opacity-90 hover:text-gray-200">Log in</a>
       </li>
       <li>
-        {{-- TODO: make this a button --}}
         <button class="btn bg-purple-100 ">
           <a href="{{route('register')}}" class="mb-2 bg-purple-500 text-white px-4 py-3 rounded font-medium hover:bg-purple-600">Create account</a>
         </button>
