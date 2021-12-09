@@ -35,17 +35,36 @@ class PostController extends Controller
         ]); // send post to single post view!
 
     }
-
+    
     public function store(Request $request)
     {
         $this->validate($request, [
             'body' => 'required', // laravel docs for validation 
             'title' => 'required|unique:posts|max:128', // laravel docs for validation 
         ]);
-
+        
         $request->user()->posts()->create($request->only(['body', 'title'])); // accessing the logged in user and assigning him to the post which is being created
-
+        
         return back(); // to which route go after submission
+    }
+    
+    public function showEdit(Post $post)
+    {
+        return view('posts.edit', [
+            'post' => $post
+        ]); 
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+
+        // validate?
+
+        return back()->with('status', 'Post successfully edited!'); // after post edit successful -> send alert
     }
 
     public function destroy(Post $post, Request $request)

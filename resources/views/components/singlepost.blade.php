@@ -18,7 +18,7 @@
                 <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
                     @csrf
                     <button
-                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save</button>
+                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save post</button>
                 </form>
                 @else {{-- otherwise -> show "unsave" option --}}
                 <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
@@ -33,9 +33,11 @@
             @endauth
         </div>
 
-        <p class="mt-4 mb-2 font-bold text-3xl"> {{ $post->title }} </p>
-
-        <p class="mb-2 mt-10">{{ $post->body }}</p>
+        <div class="border-2 border-gray-400 rounded-lg p-4 mt-4">
+            <p class="mt-4 mb-2 font-bold text-3xl"> {{ $post->title }} </p>
+            
+            <p class="mb-2 mt-10">{{ $post->body }}</p>
+        </div>
     </div>
 
     <div class="flex flex-col mt-4">
@@ -112,13 +114,17 @@
 
     @auth
     @if ($post->ownedBy(auth()->user()))
-    <div class="text-right">
-        <form action="{{ route('posts.destroy', $post) }}" method="post">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-3xl font-medium hover:bg-red-600">Delete</button>
-        </form>
-    </div>
+        <div class="flex flex-row w-12/12 justify-end">
+            <a href="{{route('posts.edit', $post->id)}}">
+                <button class="border-purple-500 border-2 text-purple-500 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-purple-200">Edit Post</button>
+            </a>
+            <form action="{{ route('posts.destroy', $post) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                class="border-red-500 text-red-500 border-2 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-red-200">Delete Post</button>
+            </form>
+        </div>
     @endif
     @endauth
 </div>

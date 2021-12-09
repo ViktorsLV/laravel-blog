@@ -10,6 +10,23 @@
 <body class="bg-white">
   <nav class="p-4 bg-purple-400 flex justify-between mb-6 text-white">
     <ul class="flex items-center">
+
+      {{-- A way of displaying Navbar with php code and iteration -> doesnt allow for custom styling --}}
+      {{-- @php
+          $navLinks = [
+              'Home' => route('home'),
+              'Posts' => route('posts'),
+              'Tags' => route('tags'),
+          ];
+      @endphp
+
+      @foreach($navLinks as $name => $link)
+      <li>
+        <a href="{{ $link }}" class="mr-2 p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">{{ $name }}</a>
+      </li>
+      @endforeach --}}
+
+      
       <li>
         <a href="/" class="mr-2 {{request()->is('/') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Home</a>
       </li>

@@ -9,7 +9,7 @@
         {{-- TODO: crete user stats? --}}
         <ul>
           <li>
-            <p>Total posts created: {{ ($posts->count()) }}</p>
+            <p>Total posts created: {{ ($posts->count()) }}</p> {{-- Counts the entities in the array --}}
           </li>
           <li>
             <p>Total likes received: {{$user->receivedLikes->count()}} </p> {{-- taken from User model relationship --}}
@@ -39,7 +39,7 @@
         @else {{-- If there are NO posts then show this text --}}
         <div class="mt-10 text-center">
           <img src="{{ asset('images/noposts.svg') }}" alt="" width="250" class="mx-auto"> 
-          <p class="mt-4"> You don't have any posts saved yet</p>
+          <p class="mt-4"> You haven't created any posts yet</p>
         </div>
         @endif
       </div>
