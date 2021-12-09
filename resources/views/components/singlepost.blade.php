@@ -97,7 +97,7 @@
                     <div class="mt-1 mb-2 p-5 border-2 border-gray-200 rounded-md ">
                         <div class="mb-2">
                             <a href="" class="font-bold">{{ $comment->user->name }}</a> {{-- taken from Comment model where relationship was made with user --}}
-                            <span class="text-gray-600 text-sm ml-2">{{ $post->created_at->diffForHumans() }}</span>
+                            <span class="text-gray-600 text-sm ml-2">{{ $comment->created_at->diffForHumans() }}</span>
                         </div>
                         <p >{{ $comment->commentBody }}</p>
                     </div>

@@ -12,13 +12,9 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    // public function __construct()
-    // {
-    //     $this->middleware(['guest']); // cant access login page if you are logged in 
-    // }
-
     public function store(Request $request)
     {
+        /* validate the request -> check if the input data is valid */
         $this->validate($request, [
             'email' => 'required|email', 
             'password' => 'required',  
