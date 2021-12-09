@@ -35,7 +35,7 @@ Route::get('/', function () {
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest'); // can assign a name so we can look for this route in links href="{{route('register')}}
 Route::post('/register', [RegisterController::class, 'store']); // registers and signs in the user
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest'); // can only be accessed by NON-authenticated users
 Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout'); // has to be a post route to prevent csrf
@@ -44,6 +44,8 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show'); // route to show an individual post. The URL consists of /post/{postId}
+Route::get('/posts/{post}/edit', [PostController::class, 'showEdit'])->name('posts.edit')->middleware('auth'); // route to edit an individual post can be accessed only by author + additional check for logged in user
+Route::put('/posts/{post}/edit', [PostController::class, 'update'])->middleware('auth');; // route to edit an individual post can be performed only by author
 
 Route::get('/users/{user:username}/profile', [UserPostController::class, 'index'])->name('users.posts'); // :username -> extracts this column from route model binding (https://laravel.com/docs/8.x/routing#route-model-binding)
 

@@ -14,6 +14,11 @@
       </div>
 
       <div class="w-6/12 bg-purple-100 p-6">
+        @if (session('status')) 
+          <div class="bg-red-400 rounded-md mb-6 p-3 text-white text-center">
+            {{ session('status') }}
+          </div>
+        @endif
         <form action="{{route('register')}}" method="post">
           @csrf {{-- Cross-site request forgerie protector - CSRF token allows middleware to validate the request (creates a hidden input with a value?) --}} 
           <div class="mb-4">
