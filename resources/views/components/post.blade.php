@@ -10,7 +10,7 @@
 
     <p><a href="{{route('posts.show', $post)}}"
             {{-- class="mb-2 font-bold text-2xl hover:text-purple-400">{{Str::of($post->title)->limit(60, ' (...)')}}</a> --}} {{-- The easier way with Laravel built in method --}}
-            class="mb-2 font-bold text-2xl hover:text-purple-400"> {{strlen($post->title) > 60 ? substr($post->title, 0, 50)."(...)" : $post->title}} {{-- the way with php and ternary operator --}}
+            class="mb-2 font-bold text-2xl hover:text-purple-400"> {{strlen($post->title) > 50 ? substr($post->title, 0, 50)."(...)" : $post->title}} {{-- the way with php and ternary operator --}}
             {{-- ( https://www.php.net/manual/en/function.substr.php ) --}}
         </a>
     </p>
