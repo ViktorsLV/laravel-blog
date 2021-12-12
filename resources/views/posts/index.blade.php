@@ -7,14 +7,14 @@
 {{-- TODO: Use markdown? --}}
 
 @section('content')
-  @if (session('status'))
-  <div class="bg-green-500 rounded-md my-4 p-3 text-white text-center">
-    {{ session('status') }}
-  </div>
-  @endif
-  <div class="flex justify-center">
-  <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
 
+<div class="flex justify-center">
+  <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
+    @if (session('status'))
+    <div class="bg-green-500 rounded-md my-4 p-3 text-white text-center">
+      {{ session('status') }}
+    </div>
+    @endif
     <div class="flex flex-row w-12/12 justify-between ">
       <div class="text-2xl font-medium mb-5 text-gray-600">Recent Posts</div>
       @auth
