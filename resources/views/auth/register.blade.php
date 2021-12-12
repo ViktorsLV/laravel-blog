@@ -20,7 +20,7 @@
           </div>
         @endif
         <form action="{{route('register')}}" method="post">
-          @csrf {{-- Cross-site request forgerie protector - CSRF token allows middleware to validate the request (creates a hidden input with a value?) --}} 
+          @csrf {{-- Cross-site request forgery protector - CSRF token allows middleware to validate the request (creates a hidden input with a value?) --}} 
           <div class="mb-4">
             <label for="name" class="sr-only">Name</label>
             {{-- old('') - helps with reading old session data and if on form submit some values are incorrect the form doesn't go completely empty but saves the old values - ( https://laravel.com/docs/8.x/requests#retrieving-old-input )--}}
@@ -69,20 +69,12 @@
           <div class="mb-4">
             <label for="password_confirmation" class="sr-only">Password again</label>
             <input type="password" name="password_confirmation" id="password_confirmation" class="bg-white-100 border-2 w-full p-4 rounded-lg" value="" placeholder="Repeat your password">
-  
-            {{-- @error('password_confirmation')
-              <div class="text-red-400 mt-4 text-sm">
-                  {{$message}}
-              </div>
-            @enderror --}}
           </div>
   
           <button type="submit" class="bg-purple-500 text-white px-4 py-3 rounded font-medium w-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">Register</button>
           <p class="text-center mt-2">Already have an account? <a class="text-blue-500 hover:text-blue-700" href="{{route('login')}}">Log in here</a> </p>
         </form>
       </div>
-
-      {{-- TODO: add "log in button" --}}
     </div>
   </div>
 @endsection

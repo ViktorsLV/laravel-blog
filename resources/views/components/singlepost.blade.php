@@ -106,7 +106,6 @@
                 {{-- {{$posts->links()}} --}}
             </div>
         @else {{-- If there are NO posts then show this text --}}
-        {{-- TODO: add SVG --}}
            <p>No comments here yet</p>
         @endif
 

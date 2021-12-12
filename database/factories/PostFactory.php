@@ -14,7 +14,7 @@ class PostFactory extends Factory
     public function definition()
     {
         /* php artisan tinker - to enter the shell and seed db with fake data */
-        /* App\Models\Post::factory()->times(10)->create(['user_id' => 1]);  -- assigns the userId to each post */
+        /* App\Models\Post::factory()->times(10)->create(['user_id' => 1]);  -- assigns the userId to each post - USER HAS TO BE CREATED FIRST*/ 
         /* (https://fakerphp.github.io/formatters/text-and-paragraphs/) */
         return [
             'body' => $this->faker->paragraph(15), 

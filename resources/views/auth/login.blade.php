@@ -46,15 +46,12 @@
             </div>
 
             {{-- for remembering user when logging in --}}
-            {{-- TODO: actually remember the user --}}
             <div class="mb-4">
               <div class="flex items-center">
                 <input type="checkbox" name="remember" id="remember" class="mr-2">
                 <label for="remember">Remember me</label>
               </div>
             </div>
-
-            {{-- TODO: add register link --}}
 
             <button type="submit" class="bg-purple-500 text-white px-4 py-3 rounded font-medium w-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">Login</button>
             <p class="text-center mt-2">Don't have an account? <a class="text-blue-500 hover:text-blue-700" href="{{route('register')}}">Register here</a> </p>

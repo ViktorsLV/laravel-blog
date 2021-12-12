@@ -16,6 +16,8 @@ class Post extends Model
         'title', 
     ];
 
+    /* TO SEED THE DATABASE GO TO FACTORIES AND RUN COMMANDS FROM TINKER SHELL */
+
     /* Post likes */
     public function likedBy(User $user)
     {

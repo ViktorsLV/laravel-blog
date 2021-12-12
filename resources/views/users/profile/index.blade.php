@@ -6,7 +6,6 @@
     {{-- TODO: add back button  --}}
       <div class="p-6">
         <h1 class="text-2xl font-medium mb-2 text-gray-600">{{$user->name}}</h1>
-        {{-- TODO: crete user stats? --}}
         <ul>
           <li>
             <p>Total posts created: {{ ($posts->count()) }}</p> {{-- Counts the entities in the array --}}

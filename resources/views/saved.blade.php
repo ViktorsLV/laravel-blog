@@ -3,7 +3,6 @@
 @section('content')
   <div class="flex justify-center">
     <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
-    {{-- TODO: add back button  --}}
       <div class="p-6">
         <h1 class="text-2xl font-medium mb-2 text-gray-600">Posts saved by you</h1>
       </div>

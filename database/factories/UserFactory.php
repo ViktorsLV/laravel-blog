@@ -16,6 +16,7 @@ class UserFactory extends Factory
     {
         return [
             // Faker - 3rd party library that allows to generate random data based on provided types here
+            /* php artisan tinker - to enter the shell and seed db with fake data */
             // App\Models\User::factory()->times(3)->create(); - script to run in Tinker shell and get test db data for users
 
             'name' => $this->faker->name(), 

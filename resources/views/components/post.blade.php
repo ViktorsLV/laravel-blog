@@ -1,11 +1,9 @@
 @props(['post' => $post])
 
-{{-- TODO: Add save functionality --}}
-{{-- TODO: Comments? --}}
 {{-- TODO: Tags --}}
 
 <div class="mb-4 bg-white p-6 pb-4 rounded-lg hover:shadow-md">
-    <a href="{{route('users.posts', $post->user)}}" class="font-bold">{{ $post->user->name }}</a> <span
+    <a href="{{route('users.posts', $post->user)}}" class="font-bold hover:text-purple-400">{{ $post->user->name }}</a> <span
         class="text-gray-600 ml-2 text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
     <p><a href="{{route('posts.show', $post)}}"
@@ -14,8 +12,6 @@
             {{-- ( https://www.php.net/manual/en/function.substr.php ) --}}
         </a>
     </p>
-
-    {{-- <p class="mb-2">{{ $post->body }}</p> --}}
 
     <div class="flex flex-row mt-4">
         @auth
@@ -35,7 +31,6 @@
         @endif
         @endauth
 
-        {{-- TODO: add icons --}}
         <span class="mt-1">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
         {{--(https://laravel.com/docs/8.x/helpers#strings) using string helpers conferts the word to its plural form
         --}}
@@ -48,7 +43,6 @@
 
     @auth
     <div class="text-right flex flex-row justify-end">
-        {{-- TODO: add icons --}}
         @if (!$post->ownedBy(auth()->user())) {{-- If the post belongs to a user he cannot save it --}}
         <div>
             @if (!$post->savedBy(auth()->user())) {{-- if the post isnt saved by user -> show "save" option --}}
