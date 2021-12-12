@@ -53,7 +53,10 @@
     {{$posts->links()}} {{-- Pagination -> styling is built in with tailwind --}}
 
     @else {{-- If there are NO posts then show this text --}}
-    <p>No posts here yet</p>
+    <div class="mt-10 text-center">
+      <img src="{{ asset('images/empty.svg') }}" alt="" width="250" class="mx-auto"> 
+      <p class="mt-4"> No posts here</p>
+    </div>
     @endif
   </div>
 </div>

@@ -56,7 +56,7 @@
             <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
                 @csrf
                 <button
-                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save post</button>
+                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-purple-500 py-1 px-6 rounded-xl hover:bg-purple-600">  <i class="fas fa-user"></i> Save post</button>
             </form>
             @else {{-- otherwise -> show "unsave" option --}}
             <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">

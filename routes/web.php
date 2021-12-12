@@ -61,4 +61,4 @@ Route::delete('/posts/{post}/save-post', [PostSavedController::class, 'destroy']
 Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('posts.comments')->middleware('auth'); // comment logic -> similar to likes
 Route::delete('/posts/{post}/comments', [PostCommentController::class, 'destroy'])->name('posts.comments')->middleware('auth'); 
 
-Route::get('/tags', [TagController::class, 'index'])->name('tags');
+// Route::get('/tags', [TagController::class, 'index'])->name('tags');

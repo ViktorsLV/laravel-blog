@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- importing tailwind css --}}
+  <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
   <title>BlogIT | IT Blog</title>
 </head>
 <body class="bg-white">
@@ -33,17 +34,15 @@
       <li>
         <a href="{{route('posts')}}" class="mr-2 {{request()->is('posts') || request()->is('posts/*')  ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Posts</a>
       </li>
-      <li>
+      {{-- <li>
         <a href="{{route('tags')}}" class="mr-2 {{request()->is('tags') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Tags</a>
-      </li>
+      </li> --}}
       @auth
         <li>
           <a href="{{route('saved', auth()->user())}}" class="mr-2 {{request()->is('saved/*') ? 'font-medium bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black">Saved</a>
         </li>
       @endauth
     </ul>
-
-    {{-- TODO: Look at performance improvements --}}
 
     {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
     <ul class="flex items-center">

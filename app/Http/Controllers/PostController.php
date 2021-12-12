@@ -18,7 +18,8 @@ class PostController extends Controller
         /* $posts = Post::get(); // get all posts  */
 
         // order by created date by default -> show newest posts first
-        $posts = Post::OrderBy('created_at', 'desc')->paginate(5); // built in pagination iterates and creates pages based on value provided and total posts in DB 
+        // "with" allows to load data all at once and in single queries instead of one-by-one ( bindings taken from Post Model)
+        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5); // built in pagination iterates and creates pages based on value provided and total posts in DB 
         
         return view('posts.index', [
             'posts' => $posts
