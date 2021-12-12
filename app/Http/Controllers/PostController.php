@@ -18,7 +18,8 @@ class PostController extends Controller
         /* $posts = Post::get(); // get all posts  */
 
         // order by created date by default -> show newest posts first
-        $posts = Post::OrderBy('created_at', 'desc')->paginate(5); // built in pagination iterates and creates pages based on value provided and total posts in DB 
+        // "with" allows to load data all at once and in single queries instead of one-by-one ( bindings taken from Post Model)
+        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5); // built in pagination iterates and creates pages based on value provided and total posts in DB 
         
         return view('posts.index', [
             'posts' => $posts
@@ -45,7 +46,11 @@ class PostController extends Controller
         
         $request->user()->posts()->create($request->only(['body', 'title'])); // accessing the logged in user and assigning him to the post which is being created
         
-        return back(); // to which route go after submission
+        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
+        
+        return view('posts.index', [
+            'posts' => $posts
+        ])->with('status', 'Post successfully created!'); // after post created successful -> send alert
     }
     
     public function showEdit(Post $post)
@@ -53,6 +58,11 @@ class PostController extends Controller
         return view('posts.edit', [
             'post' => $post
         ]); 
+    }
+
+    public function create()
+    {
+        return view('posts.create'); 
     }
 
     public function update(Request $request, Post $post)
@@ -75,6 +85,10 @@ class PostController extends Controller
  
         $post->delete();
 
-        return back();
+        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
+        
+        return view('posts.index', [
+            'posts' => $posts
+        ])->with('status', 'Post successfully deleted!'); // after post delete successful -> send alert
     }
 }
