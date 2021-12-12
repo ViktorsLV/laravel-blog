@@ -74,4 +74,8 @@
 
   @yield('content') {{-- content from other folders will go here --}}
 </body>
+
+<footer class="bg-purple-400 h-16 text-center justify-center content-center mt-8 grid">
+  <h1 class="text-white text-lg">Copyright &copy; BlogIT {{ date('Y') }} </h1>  {{-- PHP date function (https://www.php.net/manual/en/function.date.php) --}} 
+</footer>
 </html>
