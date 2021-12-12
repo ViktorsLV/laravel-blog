@@ -25,7 +25,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                    class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600 hover:bg-blue-50">Unsave</button>
+                    class="transform motion-safe:hover:scale-110 mr-2 text-purple-500 border-purple-500 py-1 px-3 rounded-xl border-2 hover:border-purple-600 hover:bg-purple-50"><i class="fas fa-bookmark"></i> Unsave</button>
                 </form>
                 @endif
             </div>

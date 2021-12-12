@@ -3,8 +3,11 @@
 @section('content')
 <div class="flex justify-center">
   <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
+    {{-- {{ URL::previous() }} -- to go route back --}}
+    <a href="{{route('posts')}}" class="mb-4 text-2xl text-purple-500"><i class="fas fa-arrow-left"></i> Go back</a>
+    
     @auth
-    <div class="bg-white p-6 rounded-lg mb-10">
+    <div class="bg-white p-6 rounded-lg mb-10 mt-4">
       <form action="{{route('posts.edit', $post)}}" method="POST"> {{-- passing the post that needs to be edited --}}
         <div class="text-2xl font-medium mb-5 text-gray-600">Edit this post:</div>
         @if (session('status')) 

@@ -46,7 +46,11 @@ class PostController extends Controller
         
         $request->user()->posts()->create($request->only(['body', 'title'])); // accessing the logged in user and assigning him to the post which is being created
         
-        return back(); // to which route go after submission
+        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
+        
+        return view('posts.index', [
+            'posts' => $posts
+        ])->with('status', 'Post successfully created!'); // after post created successful -> send alert
     }
     
     public function showEdit(Post $post)
@@ -81,6 +85,10 @@ class PostController extends Controller
  
         $post->delete();
 
-        return back();
+        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
+        
+        return view('posts.index', [
+            'posts' => $posts
+        ])->with('status', 'Post successfully deleted!'); // after post delete successful -> send alert
     }
 }
