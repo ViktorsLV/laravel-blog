@@ -18,7 +18,7 @@
                 <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
                     @csrf
                     <button
-                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-6 rounded-xl hover:bg-blue-600">Save post</button>
+                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-purple-500 py-2 px-4 rounded-xl hover:bg-purple-600"><i class="far fa-bookmark"></i> Save post</button>
                 </form>
                 @else {{-- otherwise -> show "unsave" option --}}
                 <form action="{{ route('posts.save', $post->id) }}" method="post" class="mr-1">
@@ -48,14 +48,14 @@
                 @csrf
                 {{-- <button type="submit" class="text-blue-600 mr-2">Like</button> --}}
                 <button
-                    class="transform motion-safe:hover:scale-110 mr-2 text-white bg-blue-500 py-1 px-3 rounded-xl hover:bg-blue-600">Like</button>
+                class="transform motion-safe:hover:scale-110 mr-2 text-white bg-purple-500 py-1 px-3 rounded-xl hover:bg-purple-600"><i class="fas fa-thumbs-up fa-1x mr-1 text-white"></i> Like</button>
             </form>
             @else
             <form action="{{ route('posts.likes', $post->id) }}" method="post" class="mr-1">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
-                    class="transform motion-safe:hover:scale-110 mr-2 text-blue-500 border-blue-500 py-1 px-3 rounded-xl border-2 hover:border-blue-600 hover:bg-blue-50">Unlike</button>
+                class="transform motion-safe:hover:scale-110 mr-2 text-purple-500 border-purple-500 py-1 px-3 rounded-xl border-2 hover:border-purple-600 hover:bg-purple-50"><i class="fas fa-thumbs-down text-purple-500 fa-1x mr-1"></i> Unlike</button>
             </form>
             @endif
             @endauth
@@ -116,13 +116,13 @@
     @if ($post->ownedBy(auth()->user()))
         <div class="flex flex-row w-12/12 justify-end">
             <a href="{{route('posts.edit', $post->id)}}">
-                <button class="border-purple-500 border-2 text-purple-500 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-purple-200">Edit Post</button>
+                <button class="border-purple-500 border-2 text-purple-500 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-purple-200"><i class="fas fa-edit text-purple-500 fa-1x mr-1"></i> Edit Post</button>
             </a>
             <form action="{{ route('posts.destroy', $post) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
-                class="border-red-500 text-red-500 border-2 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-red-200">Delete Post</button>
+                class="border-red-500 text-red-500 border-2 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-red-200"><i class="fas fa-trash text-red-500 fa-1x mr-1"></i>Delete Post</button>
             </form>
         </div>
     @endif
