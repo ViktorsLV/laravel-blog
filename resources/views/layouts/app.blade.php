@@ -8,7 +8,7 @@
   <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
   <title>BlogIT | IT Blog</title>
 </head>
-<body class="bg-white">
+<body class="bg-white mb-24">
   <nav class="p-4 bg-purple-400 flex justify-between mb-6 text-white">
     <ul class="flex items-center">
 
@@ -75,7 +75,7 @@
   @yield('content') {{-- content from other folders will go here --}}
 </body>
 
-<footer class="bg-purple-400 h-16 text-center justify-center content-center mt-8 grid">
+<footer class="bg-purple-400 h-16 text-center justify-center content-center mt-8 grid fixed bottom-0 w-full">
   <h1 class="text-white text-lg">Copyright &copy; BlogIT {{ date('Y') }} </h1>  {{-- PHP date function (https://www.php.net/manual/en/function.date.php) --}} 
 </footer>
 </html>

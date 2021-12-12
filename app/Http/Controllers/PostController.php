@@ -56,6 +56,11 @@ class PostController extends Controller
         ]); 
     }
 
+    public function create()
+    {
+        return view('posts.create'); 
+    }
+
     public function update(Request $request, Post $post)
     {
         $post->update([
