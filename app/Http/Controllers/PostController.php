@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class PostController extends Controller
@@ -79,7 +80,7 @@ class PostController extends Controller
 
     public function destroy(Post $post, Request $request)
     {
-        if(!$post->ownedBy(auth()->user())) {
+        if(!$post->ownedBy(auth()->user()) && Gate::denies('isAdmin')) {
             return back()->with('status', 'Unauthorized'); // don't allow the user to delete if user doesn't own the post 
         }
  
@@ -87,8 +88,6 @@ class PostController extends Controller
 
         $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
         
-        return view('posts.index', [
-            'posts' => $posts
-        ])->with('status', 'Post successfully deleted!'); // after post delete successful -> send alert
+        return redirect()->route('posts')->with('status', 'Post successfully deleted!');
     }
 }

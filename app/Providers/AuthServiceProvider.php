@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        /* define a admin user role */
+        /* define an admin user role which can be used in Blade template */
         Gate::define('isAdmin', function ($user) {
             return $user->role == 'admin';
         });
