@@ -62,17 +62,19 @@
         </div>
         @endif
         <div>
-            @if ($post->ownedBy(auth()->user()))
+            @if ($post->ownedBy(auth()->user()) || ('isAdmin'))
             <div class="flex flex-row">
                 <a href="{{route('posts.edit', $post)}}">
                     <button class="border-purple-500 border-2 text-purple-500 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-purple-200"><i class="fas fa-edit text-purple-500 fa-1x mr-1"></i> Edit Post</button>
                 </a>
+                {{-- @can('isAdmin') --}}
                 <form action="{{ route('posts.destroy', $post) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
                     class="border-red-500 text-red-500 border-2 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-red-200"><i class="fas fa-trash text-red-500 fa-1x mr-1"></i> Delete Post</button>
                 </form>
+                {{-- @endcan --}}
             </div>
             @endif
         </div>

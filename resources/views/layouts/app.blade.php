@@ -46,6 +46,11 @@
 
       {{-- some UI elements that should be visible depending on application/user state - logged in/not  --}}
       <ul class="flex items-center">
+        @if ('isAdmin') {{-- if user is admin, then show admin tag in the navbar --}}
+          <li class="mr-2 border-2 border-yellow-400 p-2 rounded bg-yellow-600">
+            <p>ADMIN</p>
+          </li>            
+        @endif
         @auth {{-- show the block of code only when user IS LOGGED IN --}}
         <li>
           <a href="{{route('user.profile', auth()->user())}}" class="mr-2 {{request()->is('profile/*') ? ' bg-gray-100 bg-opacity-50 rounded p-2 text-black' : ''}} border-2 border-gray-100 p-2 hover:bg-gray-100 hover:bg-opacity-50 rounded hover:text-black"> {{auth()->user()->name}} </a>
