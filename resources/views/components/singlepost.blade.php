@@ -43,7 +43,7 @@
         <div class="border-2 border-gray-400 rounded-lg p-4 mt-4">
             
             @if($post->image_path)
-            <div class="w-8/12">
+            <div class="w-full border-b-2 border-black">
                 <img src="{{ asset('images/' . $post->image_path)}}" />
             </div>
             @endif
