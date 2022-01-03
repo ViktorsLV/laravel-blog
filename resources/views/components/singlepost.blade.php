@@ -138,7 +138,7 @@
             {{-- {{$posts->links()}} --}}
         </div>
         @else {{-- If there are NO posts then show this text --}}
-        <p>No comments here yet</p>
+        <p class="mb-4">No comments here yet</p>
         @endif
 
     </div>
