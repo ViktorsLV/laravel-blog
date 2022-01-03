@@ -42,10 +42,19 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'body' => 'required', // laravel docs for validation 
-            'title' => 'required|unique:posts|max:128', // laravel docs for validation 
+            'title' => 'required|unique:posts|max:128', 
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048', 
         ]);
         
-        $request->user()->posts()->create($request->only(['body', 'title'])); // accessing the logged in user and assigning him to the post which is being created
+        /* (https://laravel.com/docs/8.x/filesystem#other-uploaded-file-information) - to get the information on uploaded file */
+
+        /* Concatenating strings */
+        $newImage = time() . '-' . $request->image->getClientOriginalName(); // creating a file path: time() - takes the current Unix timestamp. extension() - > jpg, png...; getClientOriginalName -> name of file from client
+
+        // dd($newImage);
+        $request->image->move(public_path('images'), $newImage);
+
+        $request->user()->posts()->create(['body' => $request->body, 'title' => $request->title, 'image_path' => $newImage]); // accessing the logged in user and assigning him to the post which is being created
         
         $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
         
@@ -85,8 +94,6 @@ class PostController extends Controller
         }
  
         $post->delete();
-
-        $posts = Post::OrderBy('created_at', 'desc')->with(['user', 'likes', 'comments', 'saves'])->paginate(5);
         
         return redirect()->route('posts')->with('status', 'Post successfully deleted!');
     }

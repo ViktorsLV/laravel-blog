@@ -4,6 +4,11 @@
 {{-- TODO: Add user avatar --}}
 
 <div class="mb-4 bg-white p-6 pb-4 rounded-lg hover:shadow-md">
+    @if (session('status'))
+    <div class="bg-yellow-200 rounded-md my-4 p-3 text-black text-center">
+      {{ session('status') }}
+    </div>
+    @endif
     <div class="flex flex-col">
         <div class="flex flex-row w-12/12 justify-between">
             <div class="flex flex-col">
@@ -36,6 +41,12 @@
         </div>
 
         <div class="border-2 border-gray-400 rounded-lg p-4 mt-4">
+            
+            @if($post->image_path)
+            <div class="w-8/12">
+                <img src="{{ asset('images/' . $post->image_path)}}" />
+            </div>
+            @endif
             <p class="mt-4 mb-2 font-bold text-3xl"> {{ $post->title }} </p>
 
             <p class="mb-2 mt-10">{{ $post->body }}</p>
@@ -100,9 +111,25 @@
             @foreach ($post->comments as $comment)
             <div class="mt-1 mb-2 p-5 border-2 border-gray-200 rounded-md ">
                 <div class="mb-2">
-                    <a href="" class="font-bold">{{ $comment->user->name }}</a> {{-- taken from Comment model where
-                    relationship was made with user --}}
-                    <span class="text-gray-600 text-sm ml-2">{{ $comment->created_at->diffForHumans() }}</span>
+                    <div class="flex flex-row justify-between">
+                        <div>
+                            <a href="" class="font-bold">{{ $comment->user->name }}</a> {{-- taken from Comment model
+                            where relationship was made with user --}}
+                            <span class="text-gray-600 text-sm ml-2">{{ $comment->created_at->diffForHumans() }}</span>
+                        </div>
+                        @if (Gate::check('isAdmin'))
+                        <div>
+                            <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="">
+                                    <i class="fas fa-trash text-red-500 fa-1x mr-1 hover:text-red-600 hover:cursor-pointer"></i>
+                                </button>
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+
                 </div>
                 <p>{{ $comment->commentBody }}</p>
             </div>
@@ -126,9 +153,9 @@
                         class="fas fa-edit text-purple-500 fa-1x mr-1"></i> Edit Post</button>
             </a>
         </div>
-    @endif
+        @endif
 
-    @if ($post->ownedBy(auth()->user()) || Gate::check('isAdmin'))
+        @if ($post->ownedBy(auth()->user()) || Gate::check('isAdmin'))
         <div>
             <form action="{{ route('posts.destroy', $post) }}" method="post">
                 @csrf
@@ -138,7 +165,7 @@
                         class="fas fa-trash text-red-500 fa-1x mr-1"></i>Delete Post</button>
             </form>
         </div>
-    @endif
+        @endif
     </div>
     @endauth
 </div>

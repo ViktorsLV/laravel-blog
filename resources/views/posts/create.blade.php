@@ -5,7 +5,7 @@
   <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
     @auth
     <div class="bg-white p-6 rounded-lg mb-10">
-      <form action="{{route('posts')}}" method="post">
+      <form action="{{route('posts')}}" method="post" enctype="multipart/form-data">
         <div class="text-2xl font-medium mb-5 text-gray-600">Let the people know what's on your mind:</div>
         @csrf
         <div class="mb-2">
@@ -27,6 +27,19 @@
             value="{{ old('body')}}" placeholder="Type here..."></textarea>
 
           @error('body')
+          <div class="text-red-500 mt-4 text-sm">
+            {{$message}}
+          </div>
+          @enderror
+        </div>
+        {{-- Image upload --}}
+        <div class="mb-2">
+          <label for="image" class="">Header image of the post (optional): </label>
+          <input type="file" name="image" id="image" cols="30" rows="1"
+            class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('image') border-red-500 @enderror"
+            value="{{ old('image')}}" placeholder="Post image"/>
+
+          @error('image')
           <div class="text-red-500 mt-4 text-sm">
             {{$message}}
           </div>
