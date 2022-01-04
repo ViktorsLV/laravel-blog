@@ -43,7 +43,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout'); // h
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 Route::post('/posts', [PostController::class, 'store']);
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware('auth', 'can:isAdmin'); /* (https://laravel.com/docs/4.2/routing#route-model-binding) */
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware('auth'); /* (https://laravel.com/docs/4.2/routing#route-model-binding) */
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show'); // route to show an individual post. The URL consists of /post/{postId}
 Route::get('/posts/{post}/edit', [PostController::class, 'showEdit'])->name('posts.edit')->middleware('auth'); // route to edit an individual post can be accessed only by author + additional check for logged in user
 Route::put('/posts/{post}/edit', [PostController::class, 'update'])->middleware('auth'); // route to edit an individual post can be performed only by author
