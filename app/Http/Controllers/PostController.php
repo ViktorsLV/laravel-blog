@@ -31,8 +31,8 @@ class PostController extends Controller
     }
 
     public function show(Post $post)
-    {
-
+    {   
+        
         return view('posts.show', [
             'post' => $post
         ]); // send post to single post view!
@@ -49,10 +49,16 @@ class PostController extends Controller
 
         /* (https://laravel.com/docs/8.x/filesystem#other-uploaded-file-information) - to get the information on uploaded file */
 
+        
         /* Concatenating strings */
         $newImage = time() . '-' . $request->image->getClientOriginalName(); // creating a file path: time() - takes the current Unix timestamp. extension() - > jpg, png...; getClientOriginalName -> name of file from client
+        
+        /* PHP */
+        // $imageFileType = strtolower(pathinfo($request->image, PATHINFO_EXTENSION));
+        // $pathinfo = pathinfo($request->image);
 
-        // dd($newImage);
+        // dd($imageFileType);
+
         $request->image->move(public_path('images'), $newImage); // moving the created image to public folder 
 
         $request->user()->posts()->create(['body' => $request->body, 'title' => $request->title, 'image_path' => $newImage]); // accessing the logged in user and assigning him to the post which is being created
@@ -111,7 +117,7 @@ class PostController extends Controller
     public function destroy(Post $post, Request $request)
     {
         if (!$post->ownedBy(auth()->user()) && Gate::denies('isAdmin')) {
-            return back()->with('status', 'Unauthorized'); // don't allow the user to delete if user doesn't own the post 
+            return back()->with('status', 'Unauthorized');  // don't allow the user to delete if user doesn't own the post or isn't admin
         }
         
         $path = public_path('images/');

@@ -34,7 +34,7 @@
         </div>
         {{-- Image upload --}}
         <div class="mb-2">
-          <label for="image" class="">Header image of the post (optional): </label>
+          <label for="image" class="">Header image of the post: </label>
           <input type="file" name="image" id="image" cols="30" rows="1"
             class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('image') border-red-500 @enderror"
             value="{{ old('image')}}" placeholder="Post image"/>
