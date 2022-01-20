@@ -11,7 +11,7 @@
 <div class="flex justify-center">
   <div class="w-8/12 bg-purple-100 p-6 rounded-lg">
     @if (session('status'))
-    <div class="bg-green-500 rounded-md my-4 p-3 text-white text-center">
+    <div class="bg-yellow-200 rounded-md my-4 p-3 text-black text-center">
       {{ session('status') }}
     </div>
     @endif

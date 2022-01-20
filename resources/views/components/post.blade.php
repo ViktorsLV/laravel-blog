@@ -61,12 +61,16 @@
             @endif
         </div>
         @endif
-        <div>
+        <div class="flex flex-row">
             @if ($post->ownedBy(auth()->user()))
-            <div class="flex flex-row">
+            <div>
                 <a href="{{route('posts.edit', $post)}}">
                     <button class="border-purple-500 border-2 text-purple-500 px-4 py-2 mr-2 rounded-2xl font-medium hover:bg-purple-200"><i class="fas fa-edit text-purple-500 fa-1x mr-1"></i> Edit Post</button>
                 </a>
+            </div>
+            @endif
+            @if ($post->ownedBy(auth()->user()) || Gate::check('isAdmin'))
+            <div>
                 <form action="{{ route('posts.destroy', $post) }}" method="post">
                     @csrf
                     @method('DELETE')

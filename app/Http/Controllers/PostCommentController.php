@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use DB;
 
 class PostCommentController extends Controller
 {
@@ -21,10 +24,14 @@ class PostCommentController extends Controller
         return back();
     }
 
-    public function destroy(Post $post, Request $request)
+    public function destroy($comment_id)
     {
-        $request->user()->comments()->where('post_id', $post->id)->delete();
-
-        return back();
+        $comment = Comment::where('id', $comment_id)->first(); // finding the comment in DB
+        if (Gate::denies('isAdmin')) {
+            return back()->with('status', 'Unauthorized'); // only admins can delete comments   
+        } else {
+            $comment->delete(); // deleting the comment from DB
+            return back()->with('status', 'Comment successfully deleted!');
+        }
     }
 }

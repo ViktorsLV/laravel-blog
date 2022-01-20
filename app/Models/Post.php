@@ -10,10 +10,10 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [ // describes which fields can be filled with data manually
-        /* TODO: image? */
         /* TODO: tags */
         'body', 
         'title', 
+        'image_path'
     ];
 
     /* TO SEED THE DATABASE GO TO FACTORIES AND RUN COMMANDS FROM TINKER SHELL */
